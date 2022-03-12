@@ -13,9 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('autors', function (Blueprint $table) {
+        Schema::create('autores', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre');
+            $table->string('thumb')->default(Autor::IMG_DEFAULT);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('autors');
+        Schema::dropIfExists('autores');
     }
 };

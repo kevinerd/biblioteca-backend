@@ -14,7 +14,9 @@ class AutorController extends Controller
      */
     public function index()
     {
-        //
+        $autores = Autor::with('libros')->get();
+
+        return $this->showAll($autores);
     }
 
     /**
@@ -25,7 +27,11 @@ class AutorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $campos = $request->all();
+
+        $autor = Autor::create($campos);
+
+        return response()->json(['data' => $autor], 201);
     }
 
     /**
@@ -34,9 +40,11 @@ class AutorController extends Controller
      * @param  \App\Models\Autor  $autor
      * @return \Illuminate\Http\Response
      */
-    public function show(Autor $autor)
+    public function show($id)
     {
-        //
+        $autor = Autor::findOrFail($id);
+
+        return response()->json(['data' => $autor], 200);
     }
 
     /**
