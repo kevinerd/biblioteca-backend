@@ -14,7 +14,9 @@ class EventoController extends Controller
      */
     public function index()
     {
-        //
+        $eventos = Evento::get();
+
+        return $this->showAll($eventos);
     }
 
     /**
