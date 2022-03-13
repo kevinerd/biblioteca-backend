@@ -21,4 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 */
 
 Route::resource('autores', \App\Http\Controllers\AutorController::class);
+Route::resource('libros', \App\Http\Controllers\LibroController::class);
+Route::resource('generos', \App\Http\Controllers\GeneroController::class);
 
+Route::get('libro_semanal', 'LibroController@libroSemanal');
+Route::get('libros_destacados', 'LibroController@librosDestacados');
