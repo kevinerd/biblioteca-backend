@@ -14,7 +14,15 @@ class TallerController extends Controller
      */
     public function index()
     {
-        //
+        $talleres = Taller::get();
+
+        return $this->showAll($talleres);
+    }
+
+    public function talleresDestacados() {
+        $talleresDestacados = Taller::where('destacado', Taller::DESTACADO);
+
+        return $this->showAll($talleresDestacados);
     }
 
     /**
@@ -25,7 +33,11 @@ class TallerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $campos = $request->all();
+
+        $taller = Taller::create($campos);
+
+        return $this->showOne($taller, 201);
     }
 
     /**
@@ -34,9 +46,11 @@ class TallerController extends Controller
      * @param  \App\Models\Taller  $taller
      * @return \Illuminate\Http\Response
      */
-    public function show(Taller $taller)
+    public function show($id)
     {
-        //
+        $taller = Taller::findOrFail($id);
+
+        return $taller;
     }
 
     /**
@@ -57,8 +71,12 @@ class TallerController extends Controller
      * @param  \App\Models\Taller  $taller
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Taller $taller)
+    public function destroy($id)
     {
-        //
+        $taller = Taller::findOrFail($id);
+
+        $taller->delete();
+
+        return $this->showOne($taller);
     }
 }

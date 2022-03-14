@@ -24,6 +24,7 @@ Route::resource('autores', \App\Http\Controllers\AutorController::class);
 Route::resource('libros', \App\Http\Controllers\LibroController::class);
 Route::resource('generos', \App\Http\Controllers\GeneroController::class);
 Route::resource('eventos', \App\Http\Controllers\EventoController::class);
+Route::resource('talleres', \App\Http\Controllers\TallerController::class);
 
 Route::get('libro_semanal', 'LibroController@libroSemanal');
 Route::get('libros_destacados', 'LibroController@librosDestacados');

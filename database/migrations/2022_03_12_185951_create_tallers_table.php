@@ -13,9 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tallers', function (Blueprint $table) {
+        Schema::create('talleres', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre');
+            $table->longText('descripcion');
+            $table->string('profesor');
+            $table->string('dias');
+            $table->boolean('destacado')->default(\App\Models\Taller::NO_DESTACADO);
+            $table->boolean('disponible')->default(\App\Models\Taller::DISPONIBLE);
+            $table->string('thumb')->default(\App\Models\Taller::IMG_DEFAULT);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -26,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tallers');
+        Schema::dropIfExists('talleres');
     }
 };

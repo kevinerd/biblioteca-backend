@@ -24,9 +24,9 @@ return new class extends Migration
             $table->integer('paginas')->unsigned();
             $table->integer('anio')->unsigned();
             $table->longText('sipnosis');
-            $table->string('thumb')->default(Libro::IMG_DEFAULT);
-            $table->boolean('destacado')->default(Libro::NO_DESTACADO);
-            $table->boolean('semanal')->default(Libro::NO_SEMANAL);
+            $table->string('thumb')->default(\App\Models\Libro::IMG_DEFAULT);
+            $table->boolean('destacado')->default(\App\Models\Libro::NO_DESTACADO);
+            $table->boolean('semanal')->default(\App\Models\Libro::NO_SEMANAL);
             $table->timestamps();
             $table->softDeletes();
 
